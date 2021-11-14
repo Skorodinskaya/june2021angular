@@ -1,3 +1,5 @@
-<h1>{{user.id}}) {{user.name}} {{user.username}} - {{user.email}}</h1>
-<p>{{user.address.city}}, {{user.address.street}} - {{user.address.geo.lat}}, {{user.address.geo.lng}}</p>
+<div>
+  <h1>{{user.id}}) {{user.name}} {{user.username}} - {{user.email}}</h1>
+  <p>{{user.address.city}}, {{user.address.street}} - {{user.address.geo.lat}}, {{user.address.geo.lng}}</p>
+</div>
 <app-posts [id]="user.id"></app-posts>
