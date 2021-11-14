@@ -9,7 +9,7 @@ import {PostService} from "../../services/post.service";
 })
 export class PostsComponent implements OnInit {
 
-  posts: Post[];
+  posts: Post[] = [];
 
   @Input()
   id: number;
