@@ -11,7 +11,6 @@ import {PostComponent} from './components/post/post.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentComponent} from './components/comment/comment.component';
 import {UserDetailsComponent} from './components/user-details/user-details.component';
-import {UserResolveService} from "./services/user-resolve.service";
 
 @NgModule({
   declarations: [
@@ -32,8 +31,7 @@ import {UserResolveService} from "./services/user-resolve.service";
         path: 'users',
         component: UsersComponent,
         children: [
-          {path: ':id', component: UserDetailsComponent,
-          resolve: {data: UserResolveService}},
+          {path: ':id', component: UserDetailsComponent},
         ]
       },
       {path: 'posts', component: PostsComponent},
