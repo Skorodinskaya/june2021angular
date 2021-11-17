@@ -1,6 +1,10 @@
-*{
-  width: 50%;
-  background: pink;
-  color: purple;
+.wrapper {
+  display: flex;
+  align-items: center;
   font-size: 10px;
+}
+
+button {
+  height: 20px;
+  margin-left: 20px;
 }
