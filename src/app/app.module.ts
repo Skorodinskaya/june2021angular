@@ -7,10 +7,46 @@ import {UserComponent} from './components/user/user.component';
 import {UsersComponent} from './components/users/users.component';
 import {PostsComponent} from './components/posts/posts.component';
 import {PostComponent} from './components/post/post.component';
-import {RouterModule} from "@angular/router";
+import {Route, RouterModule} from "@angular/router";
 import {UserDetailsComponent} from './components/user-details/user-details.component';
 import {PostDetailsComponent} from './components/post-details/post-details.component';
-import {PostResolveService} from "./services/post-resolve.service";
+import {PostResolveService, UserResolveService} from "./services";
+import {HomeComponent} from './components/home/home.component';
+import {TestGuard} from "./guards/test.guard";
+import {FormsComponent} from './components/forms/forms.component';
+import {FormsModule} from "@angular/forms";
+
+const routes:Route[] = [
+  {path: '', redirectTo:'posts', pathMatch: 'full'},
+  {
+    path: '', component: HomeComponent,
+    children: [
+      {
+        path: 'users',
+        component: UsersComponent,
+        canActivateChild: [TestGuard],
+        canDeactivate: [TestGuard],
+        children: [
+          {
+            path: ':id', component: UserDetailsComponent,
+            resolve: {data: UserResolveService}
+          }
+        ]
+      },
+
+      {
+        path: 'posts',
+        component: PostsComponent,
+        children: [
+          {
+            path: ':id', component: PostDetailsComponent,
+            resolve: {data: PostResolveService}
+          }
+        ]
+      }
+    ]
+  },
+];
 
 @NgModule({
   declarations: [
@@ -20,29 +56,19 @@ import {PostResolveService} from "./services/post-resolve.service";
     PostsComponent,
     PostComponent,
     UserDetailsComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    HomeComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'users',
-        component: UsersComponent,
-        children: [
-          {path: ':id', component:UserDetailsComponent}
-        ]},
+    RouterModule.forRoot(routes),
+    FormsModule
 
-      {path: 'posts',
-      component: PostsComponent,
-        children: [
-          {path: ':id', component: PostDetailsComponent,
-          resolve: {data: PostResolveService}
-          }
-        ]
-      }
-    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

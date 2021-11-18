@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Post} from "../../models/post";
+
+import {IPost} from "../../interfaces";
 
 @Component({
   selector: 'app-post-details',
@@ -9,7 +10,7 @@ import {Post} from "../../models/post";
 })
 export class PostDetailsComponent {
 
-  post: Post;
+  post: IPost;
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.data.subscribe(value => this.post = value['data']);

@@ -1,20 +1,20 @@
-interface Geo {
+interface IGeo {
   lat: string,
   lng: string
 }
 
-interface Address {
+interface IAddress {
     street: string,
     suite: string,
     city: string,
     zipcode: string,
-    geo: Geo
+    geo: IGeo
 }
 
-export interface User {
+export interface IUser {
   id: number,
   name: string;
   username: string;
   email: string;
-  address: Address
+  address: IAddress
 }
