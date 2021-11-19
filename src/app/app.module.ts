@@ -14,7 +14,7 @@ import {PostResolveService, UserResolveService} from "./services";
 import {HomeComponent} from './components/home/home.component';
 import {TestGuard} from "./guards/test.guard";
 import {FormsComponent} from './components/forms/forms.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const routes:Route[] = [
   {path: '', redirectTo:'posts', pathMatch: 'full'},
@@ -64,7 +64,8 @@ const routes:Route[] = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
