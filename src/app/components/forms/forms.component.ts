@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../../services";
+import {IUser} from "../../interfaces";
 
 @Component({
   selector: 'app-forms',
@@ -7,16 +10,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormsComponent implements OnInit {
 
-  user: {
+  user = {
     username: 'Max',
     password: '4444',
   };
-  constructor() { }
 
-  ngOnInit(): void {
+  myForm:  FormGroup;
+  myForm2: FormGroup;
+  users: IUser[];
+  userDetail: IUser;
+
+  constructor(private userService: UserService) {
+
   }
 
-  save() {
+  customValidator(control: AbstractControl): null | object{
+    return control.value.includes('huck')?{ahtung: 'Error'}:null;
+  }
+
+  ngOnInit(): void {
+    this.myForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(7), this.customValidator]),
+      age: new FormControl(10)
+    });
+
+    this.myForm2 = new FormGroup({
+      userId: new FormControl(1)
+    });
+
+    this.userService.getUsers().subscribe(value => this.users = value);
+  }
+
+  save(tref: HTMLFormElement) {
+    console.log(tref['username'].value);
     console.log(this.user)
+  }
+
+  save2() {
+    console.log(this.myForm);
+    console.log(this.myForm.controls['age'].value);
+    console.log(this.myForm.getRawValue());
+  }
+
+  showDetails() {
+    const id = this.myForm2.controls['userId'].value;
+    this.userDetail = this.users[id - 1]
+  }
+
+  save3() {
+    console.log(this.userDetail);
   }
 }
