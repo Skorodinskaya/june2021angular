@@ -17,7 +17,6 @@ import {FormsComponent} from './components/forms/forms.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const routes:Route[] = [
-  {path: '', redirectTo:'users', pathMatch: 'full'},
   {
     path: '', component: HomeComponent,
     children: [
@@ -33,7 +32,6 @@ const routes:Route[] = [
           }
         ]
       },
-
       {
         path: 'posts',
         component: PostsComponent,
@@ -43,7 +41,8 @@ const routes:Route[] = [
             resolve: {data: PostResolveService}
           }
         ]
-      }
+      },
+      {path: 'userDetails', component: UserDetailsComponent}
     ]
   },
 ];

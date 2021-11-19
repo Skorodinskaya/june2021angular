@@ -1,0 +1,11 @@
+.userForm {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+.selector {
+  background: #bebeff;
+}
+.button {
+  background: #f7ceff;
+}

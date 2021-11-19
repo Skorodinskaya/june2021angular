@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../../services";
 import {IUser} from "../../interfaces";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-forms',
@@ -9,55 +10,28 @@ import {IUser} from "../../interfaces";
   styleUrls: ['./forms.component.css']
 })
 export class FormsComponent implements OnInit {
-
-  user = {
-    username: 'Max',
-    password: '4444',
-  };
-
-  myForm:  FormGroup;
-  myForm2: FormGroup;
+  myForm: FormGroup;
   users: IUser[];
   userDetail: IUser;
 
-  constructor(private userService: UserService) {
-
-  }
-
-  customValidator(control: AbstractControl): null | object{
-    return control.value.includes('huck')?{ahtung: 'Error'}:null;
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(7), this.customValidator]),
-      age: new FormControl(10)
-    });
-
-    this.myForm2 = new FormGroup({
       userId: new FormControl(1)
     });
 
     this.userService.getUsers().subscribe(value => this.users = value);
   }
 
-  save(tref: HTMLFormElement) {
-    console.log(tref['username'].value);
-    console.log(this.user)
-  }
-
-  save2() {
-    console.log(this.myForm);
-    console.log(this.myForm.controls['age'].value);
-    console.log(this.myForm.getRawValue());
-  }
-
   showDetails() {
-    const id = this.myForm2.controls['userId'].value;
+    const id = this.myForm.controls['userId'].value;
     this.userDetail = this.users[id - 1]
   }
 
-  save3() {
-    console.log(this.userDetail);
+  routeTo(): void {
+    // this.router.navigate(['/userDetails']);
+
   }
 }
