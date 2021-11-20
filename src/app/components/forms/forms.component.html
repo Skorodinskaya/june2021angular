@@ -1,7 +1,9 @@
 <form [formGroup]="myForm" (change)="showDetails()" class="userForm">
   <select formControlName="userId" class="selector">
-z  </select>
+    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+  </select>
   <button class="button" (click)="routeTo()">select</button>
 </form>
 
 {{userDetail | json}}
+
