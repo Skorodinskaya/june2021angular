@@ -11,14 +11,18 @@ import {urls} from "../constants";
 
 export class PostService {
 
-  constructor(private http: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   getPosts():Observable<IPost[]>{
-    return this.http.get<IPost[]>(urls.posts);
+    return this.httpClient.get<IPost[]>(urls.posts);
   }
 
-  getPost(id:number):Observable<IPost>{
-    return this.http.get<IPost>(urls.posts + '/' + id);
+  getPost(id: number):Observable<IPost>{
+    return this.httpClient.get<IPost>(urls.posts + '/' + id);
+  }
+
+  getPostsByUserId(id:number):Observable<IPost[]>{
+    return this.httpClient.get<IPost[]>(urls.postId + id);
   }
 }

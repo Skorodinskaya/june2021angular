@@ -27,11 +27,12 @@ export class FormsComponent implements OnInit {
 
   showDetails() {
     const id = this.myForm.controls['userId'].value;
-    this.userDetail = this.users[id - 1]
+    this.userDetail = this.users[id - 1];
   }
 
   routeTo(): void {
     // this.router.navigate(['/userDetails']);
+    this.router.navigate(['/:id'], {state: this.userDetail})
 
   }
 }

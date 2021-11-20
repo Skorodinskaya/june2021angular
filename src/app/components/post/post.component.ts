@@ -12,6 +12,7 @@ export class PostComponent {
   @Input()
   post: IPost;
 
-  constructor() { }
+  @Input()
+  postId: IPost;
 
 }
