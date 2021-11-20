@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import {IUser} from "../../interfaces";
 
@@ -12,4 +12,10 @@ export class UserComponent {
   @Input()
   user: IUser;
 
+  @Output()
+  username = new EventEmitter <string>();
+
+  lift() {
+    this.username.emit(this.user.username);
+  }
 }

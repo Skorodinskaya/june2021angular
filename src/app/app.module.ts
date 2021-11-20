@@ -1,21 +1,29 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
+import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from '@angular/platform-browser';
+import {Route, RouterModule} from "@angular/router";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {registerLocaleData} from '@angular/common';
+import localRu from "@angular/common/locales/ru";
+import localUK from "@angular/common/locales/uk";
 
 import {AppComponent} from './app.component';
-import {HttpClientModule} from "@angular/common/http";
 import {UserComponent} from './components/user/user.component';
 import {UsersComponent} from './components/users/users.component';
 import {PostsComponent} from './components/posts/posts.component';
 import {PostComponent} from './components/post/post.component';
-import {Route, RouterModule} from "@angular/router";
 import {UserDetailsComponent} from './components/user-details/user-details.component';
 import {PostDetailsComponent} from './components/post-details/post-details.component';
 import {PostResolveService, UserResolveService} from "./services";
 import {HomeComponent} from './components/home/home.component';
 import {TestGuard} from "./guards/test.guard";
 import {FormsComponent} from './components/forms/forms.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TestComponent } from './components/test/test.component';
+import { IncrementPipe } from './pipes/increment.pipe';
+import { BoldAndColourDirective } from './components/directives/bold-and-colour.directive';
+
+registerLocaleData(localRu, 'ru');
+registerLocaleData(localUK, 'uk');
 
 const routes:Route[] = [
   {
@@ -59,7 +67,9 @@ const routes:Route[] = [
     PostDetailsComponent,
     HomeComponent,
     FormsComponent,
-    TestComponent
+    TestComponent,
+    IncrementPipe,
+    BoldAndColourDirective,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +79,11 @@ const routes:Route[] = [
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'ru'},
+    {provide: LOCALE_ID, useValue: 'uk'},
+    IncrementPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
