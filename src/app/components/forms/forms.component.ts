@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {UserService} from "../../services";
-import {IUser} from "../../interfaces";
+import {PostService, UserService} from "../../services";
+import {IPost, IUser} from "../../interfaces";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,21 +13,32 @@ export class FormsComponent implements OnInit {
   myForm: FormGroup;
   users: IUser[];
   userDetail: IUser;
+  posts: IPost[];
+  postDetail: IPost;
 
-  constructor(private userService: UserService, private router: Router) {
+  @Input()
+  postId: number;
+
+  constructor(private userService: UserService, private postService: PostService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      userId: new FormControl(1)
+      userId: new FormControl(1),
+      postId: new FormControl(1)
     });
 
     this.userService.getUsers().subscribe(value => this.users = value);
+
+    this.postService.getPosts().subscribe(value => this.posts = value);
   }
 
   showDetails() {
     const id = this.myForm.controls['userId'].value;
+    const idPost = this.myForm.controls['postId'].value;
+
     this.userDetail = this.users[id - 1];
+    this.postDetail = this.posts[idPost - 1];
   }
 
   routeTo(): void {
