@@ -1,27 +1,7 @@
-<form #tref (ngSubmit)="save(tref)">
-  <input type="text" name="username" [(ngModel)]="user.username">
-  <input type="password" name="password" [(ngModel)]="user.password">
-  <button>Save</button>
+<form [formGroup]="myForm" (change)="showDetails()" class="userForm">
+  <select formControlName="userId" class="selector">
+z  </select>
+  <button class="button" (click)="routeTo()">select</button>
 </form>
 
-<hr>
-
-<form [formGroup]="myForm">
-  <div><input type="text" formControlName="name"></div>
-  <div><input type="number" formControlName="age"></div>
-  <span>{{myForm.controls['name'].errors?.['minlength']|json}}</span>
-  <!--  <button (click)="save2()" [disabled]="myForm.invalid">save</button>-->
-  <button (click)="save2()">save</button>
-</form>
-
-<hr>
-
-<form [formGroup]="myForm2" (change)="showDetails()">
-  <select
-    formControlName="userId">
-    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
-  </select>
-  <button (click)="save3()">select</button>
-</form>
-
-
+{{userDetail | json}}
