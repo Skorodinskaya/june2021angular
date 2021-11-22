@@ -40,6 +40,6 @@ export class FormsComponent implements OnInit {
     this.userDetail = this.users[id - 1];
     this.postDetail = this.posts[idPost - 1];
 
-    this.router.navigate([`/users/${id}`, {state: this.users}, {state: this.posts}]);
+    this.router.navigate([`/users/${id}`, {state: this.userDetail}, {state: this.postDetail}]);
   }
 }
