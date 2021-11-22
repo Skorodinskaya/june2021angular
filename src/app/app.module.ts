@@ -15,6 +15,7 @@ import {HomeComponent} from './components/home/home.component';
 import {TestGuard} from "./guards/test.guard";
 import {FormsComponent} from './components/forms/forms.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DetailsComponent } from './components/details/details.component';
 
 const routes:Route[] = [
   {
@@ -42,6 +43,7 @@ const routes:Route[] = [
           }
         ]
       },
+      {path: 'details', component: DetailsComponent}
     ]
   },
 ];
@@ -57,6 +59,7 @@ const routes:Route[] = [
     PostDetailsComponent,
     HomeComponent,
     FormsComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

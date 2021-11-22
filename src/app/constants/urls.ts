@@ -5,5 +5,5 @@ const baseUrl = environment.API;
 export const urls = {
   users: `${baseUrl}/users`,
   posts: `${baseUrl}/posts`,
-  postId: `${baseUrl}/posts?userId=`
+  details: `${baseUrl}/details`
 };
