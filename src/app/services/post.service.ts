@@ -22,7 +22,4 @@ export class PostService {
     return this.httpClient.get<IPost>(urls.posts + '/' + id);
   }
 
-  getPostsByUserId(id:number):Observable<IPost[]>{
-    return this.httpClient.get<IPost[]>(urls.postId + id);
-  }
 }

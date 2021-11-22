@@ -8,7 +8,7 @@ import {PostService} from "../../services";
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent implements OnInit, OnChanges {
+export class PostsComponent implements OnInit {
 
   @Input()
   idPost: number;
@@ -19,10 +19,6 @@ export class PostsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.postService.getPosts().subscribe(value => this.posts = value);
-  }
-
-  ngOnChanges(): void {
-    this.postService.getPostsByUserId(this.idPost).subscribe(value => this.posts = value);
   }
 
 }

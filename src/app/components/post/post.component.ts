@@ -11,8 +11,4 @@ export class PostComponent {
 
   @Input()
   post: IPost;
-
-  @Input()
-  postId: IPost;
-
 }

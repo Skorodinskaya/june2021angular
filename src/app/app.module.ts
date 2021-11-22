@@ -15,7 +15,6 @@ import {HomeComponent} from './components/home/home.component';
 import {TestGuard} from "./guards/test.guard";
 import {FormsComponent} from './components/forms/forms.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { DetailsOfUserComponent } from './components/details-of-user/details-of-user.component';
 
 const routes:Route[] = [
   {
@@ -43,7 +42,6 @@ const routes:Route[] = [
           }
         ]
       },
-      {path: 'detailsOfUser', component: DetailsOfUserComponent}
     ]
   },
 ];
@@ -59,7 +57,6 @@ const routes:Route[] = [
     PostDetailsComponent,
     HomeComponent,
     FormsComponent,
-    DetailsOfUserComponent
   ],
   imports: [
     BrowserModule,
