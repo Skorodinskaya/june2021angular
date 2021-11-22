@@ -33,17 +33,13 @@ export class FormsComponent implements OnInit {
     this.postService.getPosts().subscribe(value => this.posts = value);
   }
 
-  showDetails() {
+  routeTo(): void {
     const id = this.myForm.controls['userId'].value;
     const idPost = this.myForm.controls['postId'].value;
 
     this.userDetail = this.users[id - 1];
     this.postDetail = this.posts[idPost - 1];
-  }
 
-  routeTo(): void {
-    // this.router.navigate(['/userDetails']);
-    this.router.navigate(['/:id'], {state: this.userDetail})
-
+    this.router.navigate(['/detailsOfUser']);
   }
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" (change)="showDetails()" class="userForm">
+<form [formGroup]="myForm" class="userForm">
   <select formControlName="userId" class="selector">
     <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
   </select>
