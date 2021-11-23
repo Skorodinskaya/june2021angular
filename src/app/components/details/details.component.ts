@@ -1,19 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormsComponent} from "../forms/forms.component";
+import {Component} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent {
 
-  @Input()
-  detail: FormsComponent;
+  state: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private router:Router, private activatedRoute:ActivatedRoute) {
+    this.activatedRoute.params.subscribe(() => {
+      this.state = this.router.getCurrentNavigation()?.extras.state;
+    })
   }
 
 }
