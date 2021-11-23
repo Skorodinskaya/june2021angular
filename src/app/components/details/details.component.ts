@@ -16,7 +16,6 @@ export class DetailsComponent {
 
     this.activatedRouter.params.subscribe(() => {
       this.state = this.router.getCurrentNavigation()?.extras.state;
-      console.log(this.router.getCurrentNavigation()?.extras.state)
     });
   }
 }
