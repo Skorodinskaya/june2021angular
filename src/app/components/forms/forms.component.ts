@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {PostService, UserService} from "../../services";
 import {IPost, IUser} from "../../interfaces";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-forms',
@@ -40,6 +40,6 @@ export class FormsComponent implements OnInit {
     this.userDetail = this.users[id - 1];
     this.postDetail = this.posts[idPost - 1];
 
-    this.router.navigate([`details/${id}`], {state: {user: this.userDetail, post: this.postDetail}});
+    this.router.navigate([`details`], {state: {user: this.userDetail, post: this.postDetail}});
   }
 }
