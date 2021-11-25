@@ -19,8 +19,8 @@ import {HomeComponent} from './components/home/home.component';
 import {TestGuard} from "./guards/test.guard";
 import {FormsComponent} from './components/forms/forms.component';
 import { TestComponent } from './components/test/test.component';
-import { IncrementPipe } from './pipes/increment.pipe';
-import { BoldAndColourDirective } from './components/directives/bold-and-colour.directive';
+import {IncrementPipe, ToStringPipe} from './pipes';
+import { BoldAndColourDirective } from './components/directives';
 
 registerLocaleData(localRu, 'ru');
 registerLocaleData(localUK, 'uk');
@@ -57,20 +57,22 @@ const routes:Route[] = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserComponent,
-    UsersComponent,
-    PostsComponent,
-    PostComponent,
-    UserDetailsComponent,
-    PostDetailsComponent,
-    HomeComponent,
-    FormsComponent,
-    TestComponent,
-    IncrementPipe,
-    BoldAndColourDirective,
-  ],
+    declarations: [
+        AppComponent,
+        UserComponent,
+        UsersComponent,
+        PostsComponent,
+        PostComponent,
+        UserDetailsComponent,
+        PostDetailsComponent,
+        HomeComponent,
+        FormsComponent,
+        TestComponent,
+        IncrementPipe,
+        BoldAndColourDirective,
+        ToStringPipe,
+        ToStringPipe,
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,

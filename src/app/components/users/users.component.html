@@ -1,8 +1,9 @@
 <div class="container">
   <div>
-    <h1>{{age}}</h1>
-    <h2>{{name}}</h2>
-    <app-user *ngFor="let user of users" [user]="user" (username)="getName($event)"></app-user>
+<!--    <h1>{{age}}</h1>-->
+<!--    <h2>{{name}}</h2>-->
+<!--    <app-user *ngFor="let user of users" [user]="user" (username)="getName($event)"></app-user>-->
+    <app-user *ngFor="let user of users" [user]="user"></app-user>
   </div>
   <div>
     <router-outlet></router-outlet>

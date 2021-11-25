@@ -1,7 +1,8 @@
 <div class="wrapper">
-  <div class="user"><h1>{{user.name}} {{user.username}} - {{user.email}}</h1></div>
+  <div class="user"><h1>{{user | toString}}</h1></div>
 <!--  <button [routerLink]="[user.id]">details</button>-->
-  <button (click)="lift()">output</button>
+<!--  <button (click)="lift()">output</button>-->
+  <button (click)="navTo(); showButton()" *ngIf="currentButton !== user.id">details</button>
 </div>
 
 
